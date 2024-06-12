@@ -7,6 +7,7 @@
 |
 */
 
+const TestsController = () => import('#controllers/tests_controller')
 import TestService from '#services/test_service'
 import router from '@adonisjs/core/services/router'
 
@@ -21,8 +22,4 @@ router.group(() => {
   })
 })
 
-router.get('/testServiceRoute', () => {
-  const value = 'Hello Ralph'
-
-  TestService.logConsole(value)
-})
+router.get('/testServiceRoute', [TestsController, 'index'])
